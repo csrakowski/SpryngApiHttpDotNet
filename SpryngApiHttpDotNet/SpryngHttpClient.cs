@@ -77,8 +77,8 @@ namespace Spryng
         public static SpryngHttpClient CreateClientWithPassword(string username, string password, HttpMessageHandler httpMessageHandler = null)
         {
             return new SpryngHttpClient(
-                username: username, 
-                secret: password, 
+                username: username,
+                secret: password,
                 isApiKey: false,
                 httpMessageHandler: httpMessageHandler);
         }
@@ -234,7 +234,7 @@ namespace Spryng
         /// <returns></returns>
         private Dictionary<string, string> CreateRequestDictionary()
         {
-            if(_usePassword)
+            if (_usePassword)
             {
                 return new Dictionary<string, string>()
                 {
@@ -252,7 +252,7 @@ namespace Spryng
             }
         }
 
-        private async Task<string> ExecuteHttpRequest(string relativePath, Dictionary<string, string> parameters)
+        private Task<string> ExecuteHttpRequest(string relativePath, Dictionary<string, string> parameters)
         {
             // Create the post data string using our custom URL Encoding so we can properly send special characters.
             var postData = string.Join("&", parameters.Select(kvp => $"{kvp.Key}={Utilities.CustomUrlEncode(kvp.Value)}"));
@@ -265,12 +265,17 @@ namespace Spryng
             // Create the String Content, set it to the Encoding used by the service and make sure we send as a form.
             var stringContent = new StringContent(postData, requestEncoding, "application/x-www-form-urlencoded");
 
-            var result = await _httpClient.PostAsync(relativePath, stringContent).ConfigureAwait(false);
+            return ExecuteHttpRequest(_httpClient, relativePath, stringContent);
+        }
+
+        private static async Task<string> ExecuteHttpRequest(HttpClient httpClient, string relativePath, StringContent stringContent)
+        {
+            var result = await httpClient.PostAsync(relativePath, stringContent).ConfigureAwait(false);
 
             return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
 
-        private HttpClient CreateHttpClient(HttpMessageHandler handler)
+        private static HttpClient CreateHttpClient(HttpMessageHandler handler)
         {
             HttpClient httpClient;
             if (handler == null)
