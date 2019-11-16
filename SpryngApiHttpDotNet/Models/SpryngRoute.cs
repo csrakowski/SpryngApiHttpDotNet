@@ -8,20 +8,20 @@ namespace Spryng.Models
 {
     public static class SpryngRoute
     {
-        public static readonly string BUSINESS = "BUSINESS";
-        public static readonly string ECONOMY = "ECONOMY";
-        public static readonly string CUSTOM_0 = "0";
-        public static readonly string CUSTOM_1 = "1";
-        public static readonly string CUSTOM_2 = "2";
-        public static readonly string CUSTOM_3 = "3";
-        public static readonly string CUSTOM_4 = "4";
-        public static readonly string CUSTOM_5 = "5";
-        public static readonly string CUSTOM_6 = "6";
-        public static readonly string CUSTOM_7 = "7";
-        public static readonly string CUSTOM_8 = "8";
-        public static readonly string CUSTOM_9 = "9";
+        public const string BUSINESS = "BUSINESS";
+        public const string ECONOMY = "ECONOMY";
+        public const string CUSTOM_0 = "0";
+        public const string CUSTOM_1 = "1";
+        public const string CUSTOM_2 = "2";
+        public const string CUSTOM_3 = "3";
+        public const string CUSTOM_4 = "4";
+        public const string CUSTOM_5 = "5";
+        public const string CUSTOM_6 = "6";
+        public const string CUSTOM_7 = "7";
+        public const string CUSTOM_8 = "8";
+        public const string CUSTOM_9 = "9";
 
-        internal static string[] VALID_ROUTES = new[]
+        internal static readonly string[] VALID_ROUTES = new[]
         {
             BUSINESS,
             ECONOMY,

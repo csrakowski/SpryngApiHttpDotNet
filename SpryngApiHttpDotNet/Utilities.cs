@@ -29,7 +29,7 @@ namespace Spryng
             return !str.Any(c => c < '0' || c > '9');
         }
 
-        private static char[] specialCharacters = new char[]
+        private static readonly char[] specialCharacters = new char[]
         {
             '%', '$', '&', '+', ',', '/', ':', ';', '=', '?',
             '@', ' ','<', '>', '#', '{', '}', '|', '\\', '^',

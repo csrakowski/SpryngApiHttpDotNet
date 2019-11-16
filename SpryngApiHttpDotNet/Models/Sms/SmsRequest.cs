@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spryng.Models.Sms
 {
-    public class SmsRequest
+    public sealed class SmsRequest
     {
         /// <summary>
         /// Unique reference for delivery reports

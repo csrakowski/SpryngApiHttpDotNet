@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Spryng
 {
-    public class SpryngHttpClientException : Exception
+    public sealed class SpryngHttpClientException : Exception
     {
         public int Code { get; private set; }
 

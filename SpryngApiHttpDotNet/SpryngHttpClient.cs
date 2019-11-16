@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Spryng
 {
-    public class SpryngHttpClient
+    public sealed class SpryngHttpClient
     {
-        private static readonly string ApiEndpoint = "https://api.spryngsms.com/api/";
-        private static readonly string ApiEndpoint_Check = "check.php";
-        private static readonly string ApiEndpoint_Send = "send.php";
+        private const string ApiEndpoint = "https://api.spryngsms.com/api/";
+        private const string ApiEndpoint_Check = "check.php";
+        private const string ApiEndpoint_Send = "send.php";
 
         private readonly string _username;
         private readonly string _password;
@@ -30,7 +30,7 @@ namespace Spryng
         /// <param name="password">Chosen by user when signing up.</param>
         /// <param name="httpMessageHandler">The HTTP handler stack to use for sending requests.</param>
         /// <exception cref="ArgumentException">An <see cref="ArgumentException"/> if the <paramref name="username"/> or <paramref name="password"/> are invalid.</exception>
-        public SpryngHttpClient(string username, string password, HttpMessageHandler httpMessageHandler = null) 
+        public SpryngHttpClient(string username, string password, HttpMessageHandler httpMessageHandler = null)
             : this(username, password, false, httpMessageHandler)
         {
         }
@@ -63,7 +63,6 @@ namespace Spryng
                 _password = secret;
                 _usePassword = true;
             }
-
 
             _httpClient = CreateHttpClient(httpMessageHandler);
         }
